@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/malcolmraine/Gatekeeper.svg?token=pzq3B1p9PAKq4XafcM1Z&branch=main)](https://travis-ci.com/malcolmraine/Gatekeeper)
-![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/malcolmraine/Gatekeeper.svg?logo=lgtm&logoWidth=18)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/malcolmraine/Gatekeeper.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/malcolmraine/Gatekeeper/context:python)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/malcolmraine/Gatekeeper.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/malcolmraine/Gatekeeper/alerts/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Gatekeeper
