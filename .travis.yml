@@ -1,0 +1,10 @@
+language: python
+python:
+  - "3.8"
+
+#before_script:
+  - cp tests/test_mutator.py ./
+  - cp tests/test_enforcer.py ./
+#script:
+  - python test_mutator.py
+  - python test_enforcer.py
