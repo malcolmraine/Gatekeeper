@@ -25,7 +25,7 @@ class Person(Mutator):
     def set_last_name_attribute(self, value):
         return value
 
-    @Mutator.datetime('%m/%d/%Y')
+    @Mutator.datetime("%m/%d/%Y")
     def get_dob_attribute(self, value):
         return value
 
@@ -50,4 +50,3 @@ print(person.last_name)
 print(person.dob)
 print(person.age)
 print(person.address)
-

@@ -77,6 +77,7 @@ class Mutator(object):
 
         def wrap(fn):
             def wrapper(*args, **kwargs):
+                print(cast_type)
                 return cast_type(fn(*args, **kwargs))
 
             return wrapper
@@ -117,6 +118,31 @@ class Mutator(object):
         def wrap(fn):
             def wrapper(*args, **kwargs):
                 return round(fn(*args, **kwargs), n)
+
+            return wrapper
+
+        return wrap
+
+    @staticmethod
+    def saturate(low: int or float, high: int or float):
+        """
+        Limits the output of the wrapped function to given range.
+
+        :param low: Low-end saturation limit
+        :param high: High-end saturation limit
+        :return: Limited output
+        """
+
+        def wrap(fn):
+            def wrapper(*args, **kwargs):
+                out = fn(*args, **kwargs)
+
+                if out < low:
+                    return low
+                elif out > high:
+                    return high
+                else:
+                    return out
 
             return wrapper
 

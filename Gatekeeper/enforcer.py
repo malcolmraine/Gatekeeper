@@ -11,7 +11,6 @@ class Enforcer(object):
 
         def wrap(fn):
             def wrapper(*args, **kwargs):
-                print(args, args_types)
                 for n, _type in enumerate(args_types):
                     if not isinstance(args[n], _type):
                         raise TypeError(f"Invalid type input for {fn}")
@@ -40,9 +39,14 @@ class Enforcer(object):
                     modified_args = list(args)
                     for i in range(len(modified_args)):
                         if len(list(modified_args[i])) < n:
-                            modified_args[i].extend(
-                                [fill_value] * (n - len(modified_args[n]))
-                            )
+                            if isinstance(modified_args[i], str):
+                                modified_args[i] += str(fill_value) * (n - len(modified_args[i]))
+                            elif isinstance(modified_args[i], list):
+                                modified_args[i].extend(
+                                    [fill_value] * (n - len(modified_args[i]))
+                                )
+                            else:
+                                raise Exception(f"Length violation at argument {i}; Cannot adjust length.")
                         elif len(list(args[i])) > n:
                             modified_args[i] = modified_args[i][:n]
 
@@ -53,31 +57,6 @@ class Enforcer(object):
                             raise Exception(f"Length violation at argument {i}")
 
                     return fn(*args, **kwargs)
-
-            return wrapper
-
-        return wrap
-
-    @staticmethod
-    def saturate(low: int or float, high: int or float):
-        """
-        Limits the output of the wrapped function to given range.
-
-        :param low: Low-end saturation limit
-        :param high: High-end saturation limit
-        :return: Limited output
-        """
-
-        def wrap(fn):
-            def wrapper(*args, **kwargs):
-                out = fn(*args, **kwargs)
-
-                if out < low:
-                    return low
-                elif out > high:
-                    return high
-                else:
-                    return out
 
             return wrapper
 
