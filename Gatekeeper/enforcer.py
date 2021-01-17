@@ -40,13 +40,17 @@ class Enforcer(object):
                     for i in range(len(modified_args)):
                         if len(list(modified_args[i])) < n:
                             if isinstance(modified_args[i], str):
-                                modified_args[i] += str(fill_value) * (n - len(modified_args[i]))
+                                modified_args[i] += str(fill_value) * (
+                                    n - len(modified_args[i])
+                                )
                             elif isinstance(modified_args[i], list):
                                 modified_args[i].extend(
                                     [fill_value] * (n - len(modified_args[i]))
                                 )
                             else:
-                                raise Exception(f"Length violation at argument {i}; Cannot adjust length.")
+                                raise Exception(
+                                    f"Length violation at argument {i}; Cannot adjust length."
+                                )
                         elif len(list(args[i])) > n:
                             modified_args[i] = modified_args[i][:n]
 

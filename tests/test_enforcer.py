@@ -8,6 +8,7 @@ class TestEnforcer(unittest.TestCase):
 
         :return:
         """
+
         @Enforcer.type_enforced(int)
         def func(x):
             return x
@@ -19,6 +20,7 @@ class TestEnforcer(unittest.TestCase):
 
         :return:
         """
+
         @Enforcer.type_enforced(int)
         def func(x):
             return x
@@ -33,6 +35,7 @@ class TestEnforcer(unittest.TestCase):
 
         :return:
         """
+
         @Enforcer.length(3)
         def func(x):
             return x
@@ -47,6 +50,7 @@ class TestEnforcer(unittest.TestCase):
 
         :return:
         """
+
         @Enforcer.length(4)
         def func(x):
             return x
@@ -60,6 +64,7 @@ class TestEnforcer(unittest.TestCase):
 
         :return: None
         """
+
         @Enforcer.length(5)
         def func(x):
             return x
@@ -73,11 +78,12 @@ class TestEnforcer(unittest.TestCase):
 
         :return: None
         """
+
         @Enforcer.length(5)
         def func(x):
             return x
 
-        self.assertRaises(Exception, func, ("test", ))
+        self.assertRaises(Exception, func, ("test",))
 
     def test_length_list_adj(self) -> None:
         """
@@ -86,6 +92,7 @@ class TestEnforcer(unittest.TestCase):
 
         :return: None
         """
+
         @Enforcer.length(5, adjust=True, fill_value=None)
         def func(x):
             return x
@@ -99,6 +106,7 @@ class TestEnforcer(unittest.TestCase):
 
         :return: None
         """
+
         @Enforcer.length(6, adjust=True, fill_value="*")
         def func(x):
             return x
@@ -112,6 +120,7 @@ class TestEnforcer(unittest.TestCase):
 
         :return: None
         """
+
         @Enforcer.length(5, adjust=True, fill_value=None)
         def func(x):
             return x
