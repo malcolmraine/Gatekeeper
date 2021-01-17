@@ -82,20 +82,3 @@ class Enforcer(object):
             return wrapper
 
         return wrap
-
-    @staticmethod
-    def round(n: int):
-        """
-        Rounds the wrapped function output to a given number of decimal places.
-
-        :param n: Number of decimal places to round to
-        :return: Rounded output
-        """
-
-        def wrap(fn):
-            def wrapper(*args, **kwargs):
-                return round(fn(*args, **kwargs), n)
-
-            return wrapper
-
-        return wrap

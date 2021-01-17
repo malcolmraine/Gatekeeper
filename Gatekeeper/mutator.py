@@ -46,6 +46,7 @@ class Mutator(object):
         :param fn: Mutator method handle
         :return: wrapper method.
         """
+
         def wrapper(*args, **kwargs):
             return fn(*args, **kwargs).upper()
 
@@ -59,6 +60,7 @@ class Mutator(object):
         :param fn: Mutator method handle
         :return: wrapper method.
         """
+
         def wrapper(*args, **kwargs):
             return fn(*args, **kwargs).lower()
 
@@ -72,11 +74,13 @@ class Mutator(object):
         :param cast_type: Type to cast to
         :return: wrapper method.
         """
+
         def wrap(fn):
             def wrapper(*args, **kwargs):
                 return cast_type(fn(*args, **kwargs))
 
             return wrapper
+
         return wrap
 
     @staticmethod
@@ -87,6 +91,7 @@ class Mutator(object):
         :param fmt: Datetime format.
         :return: wrapper method.
         """
+
         def wrap(fn):
             def wrapper(*args, **kwargs):
                 out: str or datetime = fn(*args, **kwargs)
@@ -97,4 +102,22 @@ class Mutator(object):
                     return out.strftime(fmt)
 
             return wrapper
+
+        return wrap
+
+    @staticmethod
+    def round(n: int):
+        """
+        Rounds the wrapped function output to a given number of decimal places.
+
+        :param n: Number of decimal places to round to
+        :return: Rounded output
+        """
+
+        def wrap(fn):
+            def wrapper(*args, **kwargs):
+                return round(fn(*args, **kwargs), n)
+
+            return wrapper
+
         return wrap
